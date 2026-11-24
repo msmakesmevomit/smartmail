@@ -142,7 +142,7 @@ func (c *Client) FetchMessages(uids []uint32, maxBody int) ([]*Message, error) {
 		InternalDate: true,
 		RFC822Size:   true,
 		Envelope:     true,
-		BodySection:  []*imap.FetchItemBodySection{{}},
+		BodySection:  []*imap.FetchItemBodySection{{Peek: true}},
 	}
 	msgs, err := c.c.Fetch(set, opts).Collect()
 	if err != nil {
